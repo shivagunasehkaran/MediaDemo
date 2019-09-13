@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.mediademo.R;
 import com.example.mediademo.model.Media;
+import com.example.mediademo.view.GalleryDetailActivity;
 
 import java.util.List;
 
@@ -54,6 +55,9 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.CustomVi
         holder.imageName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, GalleryDetailActivity.class);
+                intent.putExtra("image_uri", imageUri);
+                context.startActivity(intent);
             }
         });
     }
