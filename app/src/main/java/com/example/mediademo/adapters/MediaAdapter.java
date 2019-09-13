@@ -1,4 +1,4 @@
-package com.example.demoaudio.adapters;
+package com.example.mediademo.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.demoaudio.R;
-import com.example.demoaudio.modal.Media;
-import com.example.demoaudio.utils.VideoPlayerConfig;
-import com.example.demoaudio.view.ExoPlayerActivity;
+import com.example.mediademo.R;
+import com.example.mediademo.model.Media;
+import com.example.mediademo.utils.VideoPlayerConfig;
+import com.example.mediademo.view.ExoPlayerActivity;
 
 import java.util.List;
 
