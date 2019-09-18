@@ -7,7 +7,9 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.example.mediademo.R;
 
@@ -23,11 +25,14 @@ public class GalleryDetailActivity extends AppCompatActivity {
     ImageView imageView;
 
     String imageUri;
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery_detail);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
         if (getIntent().hasExtra(KEY_IMAGE_URI)) {
             imageUri = getIntent().getStringExtra(KEY_IMAGE_URI);
@@ -49,6 +54,11 @@ public class GalleryDetailActivity extends AppCompatActivity {
             extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
+        @Override
+        protected void onPreExecute() {
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
+
         public DownloadImageTask(ImageView bmImage) {
             this.bmImage = bmImage;
         }
@@ -67,6 +77,7 @@ public class GalleryDetailActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(Bitmap result) {
+            mProgressBar.setVisibility(View.GONE);
             bmImage.setImageBitmap(result);
         }
     }

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.mediademo.R;
 import com.example.mediademo.adapters.MediaAdapter;
@@ -26,6 +28,7 @@ import static com.example.mediademo.AppConstants.API_PAGE;
 public class MediaActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +37,12 @@ public class MediaActivity extends AppCompatActivity {
 
         //Find views
         recyclerView = (RecyclerView) findViewById(R.id.movies_recycler_view);
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(),
                 DividerItemDecoration.VERTICAL));
+        mProgressBar.setVisibility(View.GONE);
 
         IMediaApi apiService = ApiClient.getClient().create(IMediaApi.class);
 
