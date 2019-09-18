@@ -56,6 +56,7 @@ public class MediaAdapter extends RecyclerView.Adapter<MediaAdapter.CustomViewHo
             public void onClick(View v) {
                 Intent mIntent = ExoPlayerActivity
                         .getStartIntent(context, VideoPlayerConfig.DEFAULT_VIDEO_URL);
+                mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(mIntent);
             }
         });

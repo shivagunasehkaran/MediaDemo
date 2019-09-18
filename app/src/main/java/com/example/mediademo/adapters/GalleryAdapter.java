@@ -56,6 +56,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.CustomVi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, GalleryDetailActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("image_uri", imageUri);
                 context.startActivity(intent);
             }
